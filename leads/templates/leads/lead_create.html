@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load tailwind_filters %}
+
+{% block content %}
+  <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+    <a href="{% url 'leads:lead-list' %}">Go Back</a>
+  </button>
+<div class="max-w-lg mx-auto">
+  <h1>Create a new Lead</h1>
+</div>
+<div class="max-w-lg mx-auto">
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="w-full text-white bg-indigo-500 border-0 py-1 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit">
+      Register Lead
+    </button>
+  </form>
+</div>
+{% endblock content %}
