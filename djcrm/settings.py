@@ -1,11 +1,14 @@
 from pathlib import Path
-from decouple import config
+# from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = config('DEBUG')
-SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG')
+# SECRET_KEY = config('SECRET_KEY')
+
+DEBUG=True
+SECRET_KEY=django-insecure-d4d9ch7wro5$qqwg+05$h$=jh3o_@c#kgvi4by9e8727!65sk_
 
 ALLOWED_HOSTS = []
 
@@ -59,12 +62,18 @@ WSGI_APPLICATION = 'djcrm.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': config("DB_NAME"),
+        # 'USER': config("USER"),
+        # 'PASSWORD': config("PASSWORD"),
+        # 'HOST': config("HOST"),
+        # 'PORT': config("PORT"),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config("DB_NAME"),
-        'USER': config("USER"),
-        'PASSWORD': config("PASSWORD"),
-        'HOST': config("HOST"),
-        'PORT': config("PORT"),
+        'NAME': djcrm,
+        'USER': postgres,
+        'PASSWORD': 123,
+        'HOST': localhost,
+        'PORT': 5432,
     }
 }
 
