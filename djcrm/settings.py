@@ -8,7 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = config('SECRET_KEY')
 
 DEBUG=True
-SECRET_KEY=django-insecure-d4d9ch7wro5$qqwg+05$h$=jh3o_@c#kgvi4by9e8727!65sk_
+# SECRET_KEY='django-insecure-d4d9ch7wro5$qqwg+05$h$=jh3o_@c#kgvi4by9e8727!65sk_'
+SECRET_KEY="8_&iveva&@=zgb7k(2#ylygze6g04&5gyk@58vgg@3ha^vu6@x"
 
 ALLOWED_HOSTS = []
 
@@ -69,11 +70,11 @@ DATABASES = {
         # 'HOST': config("HOST"),
         # 'PORT': config("PORT"),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': djcrm,
-        'USER': postgres,
-        'PASSWORD': 123,
-        'HOST': localhost,
-        'PORT': 5432,
+        'NAME': 'djcrm',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
