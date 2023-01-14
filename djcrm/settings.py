@@ -69,8 +69,10 @@ DATABASES = {
         # 'PASSWORD': config("PASSWORD"),
         # 'HOST': config("HOST"),
         # 'PORT': config("PORT"),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djcrm',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': 'djcrm',
+        'NAME': BASE_DIR / 'db.sqlite3',
         'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'localhost',
@@ -134,11 +136,11 @@ if not DEBUG:
 
     ALLOWED_HOSTS = ["*"]
 
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = config("EMAIL_HOST")
-    EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = config("EMAIL_USE_TLS")
-    EMAIL_PORT = config("EMAIL_PORT")
-    DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+    # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    # EMAIL_HOST = config("EMAIL_HOST")
+    # EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+    # EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+    # EMAIL_USE_TLS = config("EMAIL_USE_TLS")
+    # EMAIL_PORT = config("EMAIL_PORT")
+    # DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
     
