@@ -96,6 +96,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'djcrm.backends.EmailOrUsernameBackend'
+]
+
 
 LANGUAGE_CODE = 'en-us'
 

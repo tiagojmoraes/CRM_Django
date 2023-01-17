@@ -22,23 +22,34 @@ class AgentCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
     def get_success_url(self):
         return reverse("agents:agent-list")
     
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.is_agent = True
-        user.is_organisor = False
-        user.set_password(f"{random.randint(1,100000)}")
-        user.save()
-        Agent.objects.create(
-            user=user,
-            organisation=self.request.user.userprofile
-        )
+    # def form_valid(self, form):
+    #     user = form.save(commit=False)
+    #     user.is_agent = True
+    #     user.is_organisor = False
+    #     user.set_password(f"{random.randint(1,100000)}")
+    #     user.save()
+    #     Agent.objects.create(
+    #         user=user,
+    #         organisation=self.request.user.userprofile
+    #     )
 
-        send_mail(
-            subject="You're invited to be an Agent.",
-            message="You were added as an Agent on DJCRM. Please come login to start working.",
-            from_email="admin@test.com",
-            recipient_list=[user.email]
-        )
+    def form_valid(self, form):
+        agent = form.save(commit=False)
+        agent.is_agent = True
+        agent.organisation=self.request.user.userprofile
+        # agent.set_password(f"{random.randint(1,100000)}")
+        agent.save()
+        # Agent.objects.create(
+        #     user=user,
+        #     organisation=self.request.user.userprofile
+        # )
+
+        # send_mail(
+        #     subject="You're invited to be an Agent.",
+        #     message="You were added as an Agent on DJCRM. Please come login to start working.",
+        #     from_email="admin@test.com",
+        #     recipient_list=[user.email]
+        # )
 
         return super(AgentCreateView, self).form_valid(form)
 

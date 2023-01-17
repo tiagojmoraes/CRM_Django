@@ -8,7 +8,7 @@ class User (AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-   
+
     def __str__(self):
         return self.user.username
   
@@ -29,8 +29,8 @@ class Lead(models.Model):
         return f"{self.first_name} {self.last_name}"
         
 class Agent(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 #Função para retornar a string dos campos desejados do bd como 'objects' no QuerySet.   
@@ -49,4 +49,4 @@ def post_user_created_signal (sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)    
 
-        post_save.connect(post_user_created_signal, sender=User)
+post_save.connect(post_user_created_signal, sender=User)

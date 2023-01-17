@@ -1,24 +1,11 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UsernameField
-from .models import Lead, Agent
+from .models import Lead, Agent, User
 
 User = get_user_model()
 
 class LeadModelForm(forms.ModelForm):
-    first_name=forms.CharField(
-        label='Primeiro Nome',
-        min_length=3,
-        max_length=100,
-        widget=forms.TextInput(attrs={'placeholder':'Inclua o seu Primeiro Nome'})
-        )
-    age=forms.CharField(
-        min_length=1,
-        max_length=3,
-        label='Idade',
-        widget=forms.TextInput(attrs={'placeholder':'Idade'})
-        )
-
     class Meta:
         model = Lead
         fields = (
@@ -26,10 +13,17 @@ class LeadModelForm(forms.ModelForm):
             'last_name',
             'age',
             'agent',
-            'description',
-            'phone_number',
+            # 'description',
+            # 'phone_number',
             'email',
         )
+
+        labels = {
+            'agent':'Agent (E-mail)',
+            'first_name':'First Name',
+            'last_name':'Last Name',
+            'age':'Age',
+        }
 
 class LeadForm(forms.Form):
     first_name = forms.CharField(label='Seu Nome')
@@ -41,7 +35,9 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = (
             "username",
+            "email",
         )
+
         field_classes = {"username": UsernameField}
 
 class AssignAgentForm(forms.Form):
